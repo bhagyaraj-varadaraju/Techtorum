@@ -24,25 +24,41 @@ Backend:
 
 ## Features
 
-### [Name of Feature 1]
+### User Registration and Login
 
-[short description goes here]
-
-[gif goes here]
-
-### [Name of Feature 2]
-
-[short description goes here]
+To connect with other techies, user needs to create an account and use those credentials to log in.
 
 [gif goes here]
 
-### [Name of Feature 3]
+### User Profile
 
-[short description goes here]
+User can add personal details, view followers and following. User can also edit and delete their profile.
 
 [gif goes here]
 
-### [ADDITIONAL FEATURES GO HERE - ADD ALL FEATURES HERE IN THE FORMAT ABOVE; you will check these off and add gifs as you complete them]
+### User Posts
+
+User can create, edit and delete posts.
+
+[gif goes here]
+
+### User Feed
+
+User can view posts from other users they follow.
+
+[gif goes here]
+
+### User Interaction on posts
+
+User can upvote and comment on other users' posts.
+
+[gif goes here]
+
+### Search Functionality
+
+User can search for other users and posts.
+
+[gif goes here]
 
 ## Installation Instructions
 
