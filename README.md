@@ -1,8 +1,8 @@
-# [your app name here]
+# Techtorum
 
 CodePath WEB103 Final Project
 
-Designed and developed by: [your names here]
+Designed and developed by: Sai Pavan Kalyan Munaga, Bhagya Raj Varadaraju
 
 🔗 Link to deployed app:
 
@@ -10,17 +10,17 @@ Designed and developed by: [your names here]
 
 ### Description and Purpose
 
-[text goes here]
+This web app is for techies to connect with each other. It is a social media platform for techies to share their knowledge and learn from each other. It is a platform where techies can post content related to tech and interact with other techies.
 
 ### Inspiration
 
-[text goes here]
+We were inspired by the social media platforms like Twitter and Reddit. We wanted to create a platform where techies can share their knowledge and learn from each other.
 
 ## Tech Stack
 
-Frontend:
+Frontend: React, Chakra UI
 
-Backend:
+Backend: Node.js, Express.js, PostgreSQL
 
 ## Features
 
