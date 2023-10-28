@@ -6,16 +6,14 @@ Reference the Creating an Entity Relationship Diagram final project guide in the
 
 [👉🏾👉🏾👉🏾 List the pages you expect to have in your app, with a ⭐ next to pages you have wireframed]
 
-## Wireframe 1: [page title]
+## Wireframe 1: [User Feed Page]
 
 [👉🏾👉🏾👉🏾 include wireframe 1]
 
-## Wireframe 2: [page title]
+## Wireframe 2: [View Post Page]
 
-[👉🏾👉🏾👉🏾 include wireframe 2]
+![View Post Page](Post_wireframe.png)
 
 ## Wireframe 3: [page title]
 
 [👉🏾👉🏾👉🏾 include wireframe 3]
-
-[👉🏾👉🏾👉🏾 include more wireframes as desired]
