@@ -1,19 +1,22 @@
 # Wireframes
 
-Reference the Creating an Entity Relationship Diagram final project guide in the course portal for more information about how to complete this deliverable.
-
 ## List of Pages
 
-[👉🏾👉🏾👉🏾 List the pages you expect to have in your app, with a ⭐ next to pages you have wireframed]
+- **Signup/Login Page**
+- **User Feed Page** ⭐
+- **Write Post Page**
+- **View Post Page** ⭐
+- **Edit Post Page**
+- **User Profile Page** ⭐
 
 ## Wireframe 1: [User Feed Page]
 
-[👉🏾👉🏾👉🏾 include wireframe 1]
+![User Feed Page](User_Feed_wireframe.png)
 
 ## Wireframe 2: [View Post Page]
 
 ![View Post Page](Post_wireframe.png)
 
-## Wireframe 3: [page title]
+## Wireframe 3: [User Profile Page]
 
-[👉🏾👉🏾👉🏾 include wireframe 3]
+![User Profile Page](User_Profile_wireframe.png)
