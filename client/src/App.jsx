@@ -6,12 +6,12 @@ import ViewPost from "./pages/ViewPost.jsx";
 import ViewProfile from "./pages/ViewProfile.jsx";
 import EditProfile from "./pages/EditProfile.jsx";
 import RootLayout from "./pages/RootLayout.jsx";
-import { Flex } from '@chakra-ui/react'
+import { Flex } from "@chakra-ui/react";
 
 function App() {
   const appRouter = createBrowserRouter([
     {
-      path: '/',
+      path: "/",
       element: <RootLayout />,
       children: [
         {
@@ -38,13 +38,13 @@ function App() {
         {
           path: "/account/edit",
           element: <EditProfile />,
-        }
-      ]
-    }
+        },
+      ],
+    },
   ]);
 
   return (
-    <Flex className="App" bg='gray.300'>
+    <Flex className="App" bg="gray.300">
       <RouterProvider router={appRouter} />
     </Flex>
   );

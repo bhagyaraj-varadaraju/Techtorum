@@ -2,10 +2,12 @@ import { pool } from "../config/database.js";
 
 export const getUserProfile = async (req, res) => {
   const { username } = req.params;
+  console.log(username);
   const getUserProfileQuery = `SELECT up.* FROM user_profile up join users u on up.user_id = u.id WHERE u.username = $1;`;
   try {
     const { rows } = await pool.query(getUserProfileQuery, [username]);
-    return { ...rows[0], username };
+    console.log(rows);
+    res.status(201).json({ ...rows[0], username });
   } catch (err) {
     console.error(err);
   }
@@ -21,7 +23,7 @@ export const addUserProfile = async (req, res) => {
       bio,
       avatar_url,
     ]);
-    return { ...rows[0], username };
+    res.status(201).json({ ...rows[0], username });
   } catch (err) {
     console.error(err);
   }
@@ -33,7 +35,7 @@ export const editUserProfile = async (req, res) => {
   const editUserProfileQuery = `UPDATE user_profile set bio=$2, avatar_url=$3 where user_id = (select id from users where username = $1)`;
   try {
     await pool.query(editUserProfileQuery, [username, bio, avatar_url]);
-    return { message: "Profile updated successfully", username };
+    res.status(200);
   } catch (err) {
     console.error(err);
   }
@@ -44,7 +46,7 @@ export const deleteProfile = async (req, res) => {
   const deleteProfileQuery = `DELETE FROM user_profile WHERE user_id = (select id from users where username = $1)`;
   try {
     await pool.query(deleteProfileQuery, [username]);
-    return { message: "Profile deleted successfully", username };
+    res.status(200);
   } catch (err) {
     console.error(err);
   }
