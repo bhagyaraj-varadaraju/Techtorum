@@ -4,8 +4,6 @@ This document should be completed and submitted during **Unit 5** of this course
 
 ## Checklist
 
-This unit, be sure to complete all tasks listed below. To complete a task, place an `x` between the brackets.
-
 - [x] Read and understand all required features
   - [x] Understand you **must** implement **all** baseline features and **two** custom features
 - [x] In `readme.md`: update app name

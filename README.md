@@ -18,7 +18,7 @@ We were inspired by the social media platforms like Twitter and Reddit. We wante
 
 ## Tech Stack
 
-Frontend: React, Chakra UI
+Frontend: React, Tailwind CSS
 
 Backend: Node.js, Express.js, PostgreSQL
 
@@ -30,7 +30,7 @@ To connect with other techies, user needs to create an account and use those cre
 
 [gif goes here]
 
-### User Profile
+### User Profile ✅
 
 User can add personal details, view followers and following. User can also edit and delete their profile.
 
