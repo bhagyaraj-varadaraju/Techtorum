@@ -35,7 +35,7 @@ const ViewProfile = () => {
       <div className="header flex justify-around items-center">
         <div className="profile-pic m-2 p-4 w-32">
           <img
-            className="rounded-full object-cover"
+            className="aspect-square rounded-full"
             src={profilePic}
             alt="profile-pic"
           ></img>

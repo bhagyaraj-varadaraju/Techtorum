@@ -7,7 +7,7 @@ const PostCard = ({ authorName, authorAvatar, date, title, content, tags }) => {
         <div className="user-details flex gap-x-0.5 items-center">
           <div className="profile-pic m-2 p-4 w-24">
             <img
-              className="rounded-full"
+              className="rounded-full aspect-square"
               src={authorAvatar}
               alt="author-avatar"
             ></img>
