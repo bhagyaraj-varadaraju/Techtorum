@@ -1,5 +1,7 @@
 import { Image, Flex, Spacer, Heading, Input, Text } from "@chakra-ui/react"
 import { NavLink } from "react-router-dom"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPenToSquare } from '@fortawesome/free-solid-svg-icons'
 
 const NavHeader = () => {
     return (
@@ -19,14 +21,16 @@ const NavHeader = () => {
             </Flex>
             <Spacer />
 
-            <Flex gap={['2', '4', '4']} alignItems='center'>
+            <Flex gap={['2', '4', '8']} alignItems='center'>
                 <NavLink to='/new-post' style={({ isActive }) => ({ textDecoration: isActive ? 'underline' : '' })}>
-                    <Text fontSize={['xs', 'sm', 'md']}>Write</Text>
+                    <Flex gap={['1', '1', '2']} alignItems='center'>
+                        <FontAwesomeIcon icon={faPenToSquare} />
+                        <Text fontSize={['xs', 'sm', 'lg']}>Write</Text>
+                    </Flex>
                 </NavLink>
 
                 <NavLink to='/profile' style={({ isActive }) => ({ textDecoration: isActive ? 'underline' : '' })}>
-
-                    <Text fontSize={['xs', 'sm', 'md']}>Profile</Text>
+                    <Image className="rounded-full object-cover" htmlHeight='32px' htmlWidth='32px' src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="Logo" />
                 </NavLink>
             </Flex>
         </Flex>

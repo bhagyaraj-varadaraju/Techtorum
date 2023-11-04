@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import PostCard from "../components/PostCard";
 
 const ViewProfile = () => {
@@ -53,9 +53,9 @@ const ViewProfile = () => {
           <p>20</p>
         </div>
         <div>
-          <button className="py-2 px-4 mx-4 my-2 bg-gray-800 text-white rounded-lg">
+        <Link to={'/account/edit'}><button className="py-2 px-4 mx-4 my-2 bg-gray-800 text-white rounded-lg">
             Edit Profile
-          </button>
+          </button></Link>
         </div>
       </div>
       <div className="posts w-[100%]">
