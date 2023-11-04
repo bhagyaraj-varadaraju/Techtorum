@@ -1,7 +1,9 @@
 import express from "express";
+
 import * as UserController from "../controllers/users.js";
 import * as PostController from "../controllers/posts.js";
-router = express.Router();
+
+const router = express.Router();
 
 router.post("/:username", UserController.addUserProfile);
 router.get("/:username", UserController.getUserProfile);
