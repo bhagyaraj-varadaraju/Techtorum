@@ -5,39 +5,48 @@ import EditPost from "./pages/EditPost.jsx";
 import ViewPost from "./pages/ViewPost.jsx";
 import ViewProfile from "./pages/ViewProfile.jsx";
 import EditProfile from "./pages/EditProfile.jsx";
+import RootLayout from "./pages/RootLayout.jsx";
+import { Flex } from '@chakra-ui/react'
 
 function App() {
   const appRouter = createBrowserRouter([
     {
-      path: "/",
-      element: <HomeFeed />,
-    },
-    {
-      path: "/post/new",
-      element: <CreatePost />,
-    },
-    {
-      path: "/post/:id/edit",
-      element: <EditPost />,
-    },
-    {
-      path: "/post/:id",
-      element: <ViewPost />,
-    },
-    {
-      path: "/:username",
-      element: <ViewProfile />,
-    },
-    {
-      path: "/:username/edit",
-      element: <EditProfile />,
-    },
+      path: '/',
+      element: <RootLayout />,
+      children: [
+        {
+          index: true,
+          element: <HomeFeed />,
+        },
+        {
+          path: "/new-post",
+          element: <CreatePost />,
+        },
+        {
+          path: "/post/:id",
+          element: <ViewPost />,
+        },
+        {
+          path: "/post/:id/edit",
+          element: <EditPost />,
+        },
+        {
+          //To be changed to /:username
+          path: "/profile",
+          element: <ViewProfile />,
+        },
+        {
+          path: "/account/edit",
+          element: <EditProfile />,
+        }
+      ]
+    }
   ]);
 
   return (
-    <div>
+    <Flex className="App" bg='gray.300'>
       <RouterProvider router={appRouter} />
-    </div>
+    </Flex>
   );
 }
 
