@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const HomeFeed = () => {
   return (
     <div>
-      <Link to="/viewprofile">Profile</Link>
+      HomeFeed
     </div>
   );
 };
