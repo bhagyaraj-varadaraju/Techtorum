@@ -34,7 +34,7 @@ To connect with other techies, user needs to create an account and use those cre
 
 User can add personal details, view followers and following. User can also edit and delete their profile.
 
-[gif goes here]
+https://github.com/bhagyaraj-varadaraju/web103-final-project/assets/20358558/83e8ca3e-b7f1-497c-a07d-5708fef9e10e
 
 ### User Posts
 
