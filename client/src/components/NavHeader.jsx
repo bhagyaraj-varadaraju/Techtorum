@@ -62,7 +62,7 @@ const NavHeader = () => {
         </NavLink>
 
         <NavLink
-          to={`/${user ? user.username : "/login"}`}
+          to={`/${user ? user.username : ""}`}
           style={({ isActive }) => ({
             textDecoration: isActive ? "underline" : "",
           })}
@@ -71,7 +71,7 @@ const NavHeader = () => {
             className="rounded-full object-cover"
             htmlHeight="32px"
             htmlWidth="32px"
-            src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+            src={user.avatarurl}
             alt="Logo"
           />
         </NavLink>

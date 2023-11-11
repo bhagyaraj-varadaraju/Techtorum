@@ -23,7 +23,7 @@ const createUsersTable = async () => {
         id SERIAL PRIMARY KEY,
         github_id VARCHAR(50) UNIQUE,
         username VARCHAR(50) UNIQUE NOT NULL,
-        avatarurl VARCHAR(255),
+        avatarurl TEXT,
         bio VARCHAR(255),
         accesstoken VARCHAR(255),
         created_on TIMESTAMP DEFAULT CURRENT_TIMESTAMP
