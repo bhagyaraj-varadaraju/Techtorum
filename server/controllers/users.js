@@ -1,6 +1,7 @@
 import { pool } from "../config/database.js";
 
 export const getUserProfile = async (req, res) => {
+  console.log(req.params);
   const { username } = req.params;
   console.log(username);
   const getUserProfileQuery = `SELECT up.* FROM user_profile up join users u on up.user_id = u.id WHERE u.username = $1;`;
