@@ -4,7 +4,7 @@ import "./dotenv.js";
 const dropAllTables = async () => {
   const TABLES = [
     "users",
-    "user_profile",
+    // "user_profile",
     "follows",
     "posts",
     "comments",
@@ -21,10 +21,12 @@ const dropAllTables = async () => {
 const createUsersTable = async () => {
   const createUsersTableQuery = `CREATE TABLE IF NOT EXISTS users (
         id SERIAL PRIMARY KEY,
+        github_id VARCHAR(50) UNIQUE,
         username VARCHAR(50) UNIQUE NOT NULL,
-        email VARCHAR(50) UNIQUE,
-        password VARCHAR(100) NOT NULL,
-        created_on TIMESTAMP NOT NULL
+        avatarurl VARCHAR(255),
+        bio VARCHAR(255),
+        accesstoken VARCHAR(255),
+        created_on TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     );
     `;
   try {
@@ -131,7 +133,7 @@ const createFollowsTable = async () => {
 const createTables = async () => {
   await dropAllTables();
   await createUsersTable();
-  await createUserProfileTable();
+  // await createUserProfileTable();
   await createPostsTable();
   await createCommentsTable();
   await createVotesTable();

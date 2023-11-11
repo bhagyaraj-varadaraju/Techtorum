@@ -4,8 +4,8 @@ import { Link, useParams } from "react-router-dom";
 import PostCard from "../components/PostCard";
 
 const ViewProfile = () => {
-  // const { userName } = useParams();
-  const userName = "Timon";
+  const { userName } = useParams();
+
   const [profilePic, setProfilePic] = useState(
     "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
   );
@@ -16,6 +16,7 @@ const ViewProfile = () => {
     const fetchUserDetails = async () => {
       const res = await fetch("/api/users/" + userName);
       const data = await res.json();
+      console.log(data);
       setProfilePic(data.avatar_url);
       setBio(data.bio);
     };
@@ -53,9 +54,11 @@ const ViewProfile = () => {
           <p>20</p>
         </div>
         <div>
-        <Link to={'/account/edit'}><button className="py-2 px-4 mx-4 my-2 bg-gray-800 text-white rounded-lg">
-            Edit Profile
-          </button></Link>
+          <Link to={"/account/edit"}>
+            <button className="py-2 px-4 mx-4 my-2 bg-gray-800 text-white rounded-lg">
+              Edit Profile
+            </button>
+          </Link>
         </div>
       </div>
       <div className="posts w-[100%]">

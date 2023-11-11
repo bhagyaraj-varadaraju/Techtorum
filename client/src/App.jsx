@@ -7,8 +7,16 @@ import ViewProfile from "./pages/ViewProfile.jsx";
 import EditProfile from "./pages/EditProfile.jsx";
 import RootLayout from "./pages/RootLayout.jsx";
 import { Flex } from "@chakra-ui/react";
+import Login from "./pages/Login.jsx";
+import { UserContext, UserProvider } from "./context/UserContext.jsx";
+import { useContext } from "react";
+import Logout from "./pages/Logout.jsx";
 
 function App() {
+  const ctx = useContext(UserContext);
+  console.log(ctx, "ctx");
+  const { user } = ctx;
+
   const appRouter = createBrowserRouter([
     {
       path: "/",
@@ -16,28 +24,35 @@ function App() {
       children: [
         {
           index: true,
-          element: <HomeFeed />,
+          element: user && user.id ? <HomeFeed /> : <Login />,
+        },
+        {
+          path: "/login",
+          element: <Login />,
+        },
+        {
+          path: "/logout",
+          element: <Logout />,
+        },
+        {
+          path: "/:username",
+          element: user && user.id ? <ViewProfile /> : <Login />,
         },
         {
           path: "/new-post",
-          element: <CreatePost />,
+          element: user && user.id ? <CreatePost /> : <Login />,
         },
         {
           path: "/post/:id",
-          element: <ViewPost />,
+          element: user && user.id ? <ViewPost /> : <Login />,
         },
         {
           path: "/post/:id/edit",
-          element: <EditPost />,
-        },
-        {
-          //To be changed to /:username
-          path: "/profile",
-          element: <ViewProfile />,
+          element: user && user.id ? <EditPost /> : <Login />,
         },
         {
           path: "/account/edit",
-          element: <EditProfile />,
+          element: user && user.id ? <EditProfile /> : <Login />,
         },
       ],
     },
