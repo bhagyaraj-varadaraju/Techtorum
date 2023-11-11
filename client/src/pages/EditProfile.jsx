@@ -26,15 +26,29 @@ const EditProfile = () => {
   const avatarurl = useRef(null);
 
   return (
-    <form onSubmit={handleFormSubmit}>
-      <h1>Update Profile</h1>
-      <div>Bio</div>
-      <input type="text" ref={bio} placeholder="Update your Bio..." />
-      <div>Profile Pic</div>
-      <input type="text" ref={avatarurl} placeholder="Paste your image link" />
-      <div>
-        <button type="submit">Submit</button>
-      </div>
+    <form className="flex flex-col" onSubmit={handleFormSubmit}>
+      <h1 className="text-3xl text-center font-bold">Update Profile</h1>
+      <div className="font-bold text-xl my-2">Bio</div>
+      <textarea
+        ref={bio}
+        placeholder="Update your Bio..."
+        className="placeholder:p-2 resize-none rounded-sm mt-2 bg-gray-200"
+        rows="3"
+        cols="50"
+      ></textarea>
+      <div className="font-bold text-xl my-2">Profile Pic</div>
+      <input
+        type="text"
+        ref={avatarurl}
+        placeholder="Paste your image link"
+        className="placeholder:p-2 w-full rounded-sm mt-2 bg-gray-200"
+      />
+      <button
+        type="submit"
+        className="py-2 px-4 mx-auto self-center my-8 bg-gray-800 font-bold text-white rounded-lg"
+      >
+        Submit
+      </button>
     </form>
   );
 };

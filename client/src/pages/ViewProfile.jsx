@@ -49,33 +49,32 @@ const ViewProfile = () => {
     <div className="w-[60%] m-auto">
       <div className="header flex justify-around items-center gap-2">
         <img
-          className="m-1 p-3 w-[25%] aspect-square rounded-full"
+          className="m-1 p-3 w-2/12 aspect-square rounded-full"
           src={profilePic}
           alt="profile-pic"
         ></img>
-        {/* </div> */}
-        <div className="m-2 user-details flex flex-col">
+        <div className="m-2 w-6/12 user-details flex flex-col">
           <h1 className="text-2xl">{userName}</h1>
           <p>{bio}</p>
         </div>
-        <div className="followers flex flex-col text-center ">
+        <div className="followers w-2/12 flex flex-col text-center ">
           <p>Followers</p>
           <p>21</p>
         </div>
-        <div className="following flex flex-col text-center">
+        <div className="following w-2/12 flex flex-col text-center">
           <p>Following</p>
           <p>20</p>
         </div>
         <div>
           <Link to={"./edit"}>
-            <button className="py-2 px-4 ml-2 my-2 bg-gray-800 text-white rounded-lg">
+            <button className="py-2 px-4 ml-2 my-2 bg-gray-800 font-bold text-white rounded-lg">
               Edit Profile
             </button>
           </Link>
         </div>
         <div>
           <button
-            className="py-2 px-4 ml-2 my-2 bg-gray-800 text-white rounded-lg"
+            className="py-2 px-4 ml-2 my-2 bg-gray-800 text-white font-bold rounded-lg"
             onClick={handleDeleteProfile}
           >
             Delete Profile

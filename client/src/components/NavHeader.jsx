@@ -7,6 +7,12 @@ import { UserContext } from "../context/UserContext";
 
 const NavHeader = () => {
   const { user } = useContext(UserContext);
+  const { logout } = useContext(UserContext);
+
+  const handleLogout = async () => {
+    logout();
+  };
+
   return (
     <Flex
       w="full"
@@ -60,7 +66,6 @@ const NavHeader = () => {
             <Text fontSize={["xs", "sm", "lg"]}>Write</Text>
           </Flex>
         </NavLink>
-
         <NavLink
           to={`/${user ? user.username : ""}`}
           style={({ isActive }) => ({
@@ -71,10 +76,19 @@ const NavHeader = () => {
             className="rounded-full object-cover"
             htmlHeight="32px"
             htmlWidth="32px"
-            src={user.avatarurl}
+            src={
+              user
+                ? user.avatarurl
+                : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+            }
             alt="Logo"
           />
         </NavLink>
+        {user && (
+          <button className="font-bold" onClick={handleLogout}>
+            Logout
+          </button>
+        )}
       </Flex>
     </Flex>
   );
