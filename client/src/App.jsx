@@ -14,7 +14,6 @@ import Logout from "./pages/Logout.jsx";
 
 function App() {
   const ctx = useContext(UserContext);
-  console.log(ctx, "ctx");
   const { user } = ctx;
 
   const appRouter = createBrowserRouter([
@@ -35,7 +34,7 @@ function App() {
           element: <Logout />,
         },
         {
-          path: "/:username",
+          path: "/:userName",
           element: user && user.id ? <ViewProfile /> : <Login />,
         },
         {
@@ -51,7 +50,7 @@ function App() {
           element: user && user.id ? <EditPost /> : <Login />,
         },
         {
-          path: "/account/edit",
+          path: "/:userName/edit",
           element: user && user.id ? <EditProfile /> : <Login />,
         },
       ],
