@@ -4,18 +4,15 @@ import "./dotenv.js";
 const dropAllTables = async () => {
   const TABLES = [
     "users",
-    // "user_profile",
     "follows",
     "posts",
     "comments",
     "votes",
   ];
 
-  await Promise.all(
-    TABLES.map(async (table) => {
-      await pool.query(`DROP TABLE IF EXISTS ${table} CASCADE`);
-    })
-  );
+  TABLES.map(async (table) => {
+    await pool.query(`DROP TABLE IF EXISTS ${table} CASCADE`);
+  })
 };
 
 const createUsersTable = async () => {
@@ -37,31 +34,14 @@ const createUsersTable = async () => {
   }
 };
 
-const createUserProfileTable = async () => {
-  const createUserProfileTableQuery = `CREATE TABLE IF NOT EXISTS user_profile (
-        id SERIAL PRIMARY KEY,
-        user_id INTEGER UNIQUE NOT NULL,
-        bio VARCHAR(255),
-        avatar_url VARCHAR(255),
-        created_on TIMESTAMP NOT NULL,
-        FOREIGN KEY (user_id) REFERENCES users (id)
-    );
-    `;
-  try {
-    const res = await pool.query(createUserProfileTableQuery);
-    console.log("🎉 User Profile Table created successfully");
-  } catch (err) {
-    console.error("⚠️ Error creating User Profile Table", err);
-  }
-};
-
 const createPostsTable = async () => {
   const createPostsTableQuery = `CREATE TABLE IF NOT EXISTS posts (
         id SERIAL PRIMARY KEY,
         user_id INTEGER NOT NULL,
         title VARCHAR(255) NOT NULL,
         content TEXT NOT NULL,
-        tags VARCHAR(255),
+        upvote_count INTEGER NOT NULL DEFAULT 0,
+        downvote_count INTEGER NOT NULL DEFAULT 0,
         created_on TIMESTAMP NOT NULL,
         FOREIGN KEY (user_id) REFERENCES users (id)
     );
@@ -133,7 +113,6 @@ const createFollowsTable = async () => {
 const createTables = async () => {
   await dropAllTables();
   await createUsersTable();
-  // await createUserProfileTable();
   await createPostsTable();
   await createCommentsTable();
   await createVotesTable();

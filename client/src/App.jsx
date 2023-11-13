@@ -42,11 +42,11 @@ function App() {
           element: user && user.id ? <CreatePost /> : <Login />,
         },
         {
-          path: "/post/:id",
+          path: "/:userName/post/:id",
           element: user && user.id ? <ViewPost /> : <Login />,
         },
         {
-          path: "/post/:id/edit",
+          path: "/:userName/post/:id/edit",
           element: user && user.id ? <EditPost /> : <Login />,
         },
         {
