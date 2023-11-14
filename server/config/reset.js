@@ -2,17 +2,11 @@ import { pool } from "./database.js";
 import "./dotenv.js";
 
 const dropAllTables = async () => {
-  const TABLES = [
-    "users",
-    "follows",
-    "posts",
-    "comments",
-    "votes",
-  ];
+  const TABLES = ["users", "follows", "posts", "comments", "votes"];
 
   TABLES.map(async (table) => {
     await pool.query(`DROP TABLE IF EXISTS ${table} CASCADE`);
-  })
+  });
 };
 
 const createUsersTable = async () => {
@@ -42,7 +36,7 @@ const createPostsTable = async () => {
         content TEXT NOT NULL,
         upvote_count INTEGER NOT NULL DEFAULT 0,
         downvote_count INTEGER NOT NULL DEFAULT 0,
-        created_on TIMESTAMP NOT NULL,
+        created_on TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         FOREIGN KEY (user_id) REFERENCES users (id)
     );
     `;
@@ -60,7 +54,7 @@ const createCommentsTable = async () => {
         user_id INTEGER NOT NULL,
         post_id INTEGER NOT NULL,
         content TEXT NOT NULL,
-        created_on TIMESTAMP NOT NULL,
+        created_on TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         FOREIGN KEY (user_id) REFERENCES users (id),
         FOREIGN KEY (post_id) REFERENCES posts (id)
     );
@@ -79,7 +73,7 @@ const createVotesTable = async () => {
         user_id INTEGER NOT NULL,
         post_id INTEGER NOT NULL,
         type VARCHAR(10) NOT NULL,
-        created_on TIMESTAMP NOT NULL,
+        created_on TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         FOREIGN KEY (user_id) REFERENCES users (id),
         FOREIGN KEY (post_id) REFERENCES posts (id)
     );
@@ -96,7 +90,7 @@ const createFollowsTable = async () => {
   const createFollowsTableQuery = `CREATE TABLE IF NOT EXISTS follows (
         following_id INTEGER NOT NULL,
         followed_id INTEGER NOT NULL,
-        created_on TIMESTAMP NOT NULL,
+        created_on TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         PRIMARY KEY (following_id, followed_id),
         FOREIGN KEY (following_id) REFERENCES users (id) ON UPDATE CASCADE ON DELETE CASCADE,
         FOREIGN KEY (followed_id) REFERENCES users (id) ON UPDATE CASCADE ON DELETE CASCADE

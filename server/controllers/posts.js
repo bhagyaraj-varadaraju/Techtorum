@@ -8,18 +8,26 @@ export const getAllUserPosts = async (req, res) => {
     res.status(201).json(rows);
   } catch (err) {
     console.error(err);
+    res.status(500).json({ success: false });
   }
 };
 
 export const createPost = async (req, res) => {
-  const {user_id} = req.params;
-  const { title, content, created_on } = req.body;
-  const createPostQuery = `INSERT INTO posts (user_id, title, content, created_on) VALUES ($1, $2, $3, $4) RETURNING *;`;
+  const { username } = req.params;
+  const { title, content } = req.body;
+  const getUserIDQuery = `SELECT id FROM users WHERE username = $1;`;
+  const createPostQuery = `INSERT INTO posts (user_id, title, content) VALUES ($1, $2, $3) RETURNING *;`;
   try {
-    const { rows } = await pool.query(createPostQuery, [user_id, title, content, created_on]);
+    const { rows: user_rows } = await pool.query(getUserIDQuery, [username]);
+    const { rows } = await pool.query(createPostQuery, [
+      user_rows[0].id,
+      title,
+      content,
+    ]);
     res.status(201).json(rows);
   } catch (err) {
     console.error(err);
+    res.status(500).json({ success: false });
   }
 };
 
@@ -31,18 +39,27 @@ export const viewPost = async (req, res) => {
     res.status(201).json(rows);
   } catch (err) {
     console.error(err);
+    res.status(500).json({ success: false });
   }
 };
 
-export const editPost = async (req, res) => { 
+export const editPost = async (req, res) => {
   const { post_id } = req.params;
   const { title, content, upvote_count, downvote_count, created_on } = req.body;
   const editPostQuery = `UPDATE posts SET title = $1, content = $2, upvote_count = $3, downvote_count = $4, created_on = $5 WHERE id = $6 RETURNING *;`;
   try {
-    const { rows } = await pool.query(editPostQuery, [title, content, upvote_count, downvote_count, created_on, post_id]);
+    const { rows } = await pool.query(editPostQuery, [
+      title,
+      content,
+      upvote_count,
+      downvote_count,
+      created_on,
+      post_id,
+    ]);
     res.status(201).json(rows);
   } catch (err) {
     console.error(err);
+    res.status(500).json({ success: false });
   }
 };
 
@@ -54,5 +71,6 @@ export const deletePost = async (req, res) => {
     res.status(201).json(rows);
   } catch (err) {
     console.error(err);
+    res.status(500).json({ success: false });
   }
-}
+};

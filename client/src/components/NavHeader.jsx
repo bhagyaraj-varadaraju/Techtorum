@@ -56,7 +56,7 @@ const NavHeader = () => {
 
       <Flex gap={["2", "4", "8"]} alignItems="center">
         <NavLink
-          to="/new-post"
+          to={`/${user ? user.username : ""}/new-post`}
           style={({ isActive }) => ({
             textDecoration: isActive ? "underline" : "",
           })}

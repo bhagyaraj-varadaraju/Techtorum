@@ -38,7 +38,7 @@ function App() {
           element: user && user.id ? <ViewProfile /> : <Login />,
         },
         {
-          path: "/new-post",
+          path: "/:userName/new-post",
           element: user && user.id ? <CreatePost /> : <Login />,
         },
         {
