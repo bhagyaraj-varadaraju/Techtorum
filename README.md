@@ -24,11 +24,11 @@ Backend: Node.js, Express.js, PostgreSQL
 
 ## Features
 
-### User Registration and Login
+### User Registration and Login ✅
 
 To connect with other techies, user needs to create an account and use those credentials to log in.
 
-[gif goes here]
+https://github.com/bhagyaraj-varadaraju/web103-final-project/assets/20358558/eb753116-b536-42f5-bc46-6026c1227c32
 
 ### User Profile ✅
 
@@ -42,11 +42,11 @@ User can create, edit and delete posts.
 
 [gif goes here]
 
-### User Feed
+### User Feed ✅
 
 User can view posts from other users they follow.
 
-[gif goes here]
+https://github.com/bhagyaraj-varadaraju/web103-final-project/assets/20358558/5cb65147-221b-49f4-adf2-a48739387c87
 
 ### User Interaction on posts
 
