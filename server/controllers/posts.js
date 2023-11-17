@@ -33,7 +33,14 @@ export const createPost = async (req, res) => {
 
 export const viewPost = async (req, res) => {
   const { post_id } = req.params;
-  const viewPostQuery = `SELECT * FROM posts WHERE id = $1;`;
+
+  const viewPostQuery = `
+  SELECT p.*, u.username, u.avatarurl
+  FROM posts p
+  JOIN users u ON p.user_id = u.id
+  WHERE p.id = $1;
+`;
+
   try {
     const { rows } = await pool.query(viewPostQuery, [post_id]);
     res.status(201).json(rows);
