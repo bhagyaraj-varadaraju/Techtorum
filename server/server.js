@@ -3,6 +3,7 @@ import cors from "cors";
 import usersRoutes from "./routes/users.js";
 import authRoutes from "./routes/auth.js";
 import postRoutes from "./routes/posts.js";
+import FeedRoutes from "./routes/feed.js";
 import passport from "passport";
 import { GitHub } from "./config/auth.js";
 import session from "express-session";
@@ -40,6 +41,7 @@ app.get("/failure", (req, res) => {
 
 app.use("/api/posts", postRoutes);
 app.use("/api/users", usersRoutes);
+app.use("/api/feed", FeedRoutes);
 app.use("/auth", authRoutes);
 
 const PORT = process.env.PORT || 3001;
