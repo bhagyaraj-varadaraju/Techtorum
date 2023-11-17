@@ -20,10 +20,6 @@ const FollowRecommendations = () => {
     fetchFollowRecommendations();
   }, []);
 
-  useEffect(() => {
-    console.log(followRecommendations);
-  }, [followRecommendations]);
-
   return (
     <div>
       <p className="font-bold text-xl">Suggested for you</p>

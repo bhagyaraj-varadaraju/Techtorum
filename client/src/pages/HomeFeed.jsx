@@ -15,7 +15,6 @@ const HomeFeed = () => {
     const fetchFeedPosts = async () => {
       const res = await fetch("/api/feed/" + userName);
       const data = await res.json();
-      console.log(data);
       setPosts(data);
     };
 

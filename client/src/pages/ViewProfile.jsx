@@ -43,11 +43,6 @@ const ViewProfile = () => {
       const res = await fetch("/api/users/" + loggedInUsername + "/following");
       const data = await res.json();
       const followingUsernames = data.following.map((user) => user.username);
-      console.log(
-        followingUsernames,
-        userName,
-        followingUsernames.includes(userName)
-      );
       return followingUsernames.includes(userName);
     };
 
