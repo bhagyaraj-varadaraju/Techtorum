@@ -80,7 +80,7 @@ const ViewProfile = ({ api_url }) => {
       }
     );
     const data = await res.json();
-    navigate(0);
+    window.location.reload();
   };
 
   const handleUnFollow = async () => {
@@ -97,7 +97,7 @@ const ViewProfile = ({ api_url }) => {
       }
     );
     const data = await res.json();
-    navigate(0);
+    window.location.reload();
   };
 
   return (
