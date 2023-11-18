@@ -10,13 +10,13 @@ const ViewProfile = ({ api_url }) => {
   const { user: loggedInUser, logout } = useContext(UserContext);
   const loggedInUsername = loggedInUser.username;
   const { userName } = useParams();
-  const navigate = useNavigate();
 
   const [profilePic, setProfilePic] = useState(
     "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
   );
   const [bio, setBio] = useState("Put your bio here!");
   const [posts, setPosts] = useState([]);
+  const navigate = useNavigate();
   const [isFollowingUser, setIsFollowingUser] = useState(false);
 
   useEffect(() => {
@@ -80,7 +80,7 @@ const ViewProfile = ({ api_url }) => {
       }
     );
     const data = await res.json();
-    navigate(`/${userName}`);
+    window.location.href = `/${userName}`;
   };
 
   const handleUnFollow = async () => {
@@ -97,7 +97,7 @@ const ViewProfile = ({ api_url }) => {
       }
     );
     const data = await res.json();
-    navigate(`/${userName}`);
+    window.location.href = `/${userName}`;
   };
 
   return (
