@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, NavLink } from "react-router-dom";
 // import TimeAgo from "react-timeago";
+import { Button, HStack, Spacer } from "@chakra-ui/react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faThumbsUp, faThumbsDown } from "@fortawesome/free-solid-svg-icons";
 import { UserContext } from "../context/UserContext";
@@ -58,7 +59,16 @@ const ViewPost = () => {
 
   return (
     <div className="w-[80vw] m-4 p-4">
-      <h1 className="text-4xl font-bold my-4">{post.title}</h1>
+      <HStack>
+        <h1 className="text-4xl font-bold my-4">{post.title}</h1>
+        <Spacer />
+        {
+          userName == post.username &&
+          <NavLink to={"/" + userName + "/post/" + post.id + "/edit"}>
+            <Button variant="solid" colorScheme="gray">Edit Post</Button>
+          </NavLink>
+        }
+      </HStack>
       <div className="flex items-center justify-center gap-1">
         <Link className="flex" to={`/${post.username}`}>
           <img
@@ -74,8 +84,7 @@ const ViewPost = () => {
         </button>
         <button
           className="flex gap-1 align-middle justify-center"
-          onClick={() => handleVote("downvote")}
-        >
+          onClick={() => handleVote("downvote")}>
           <FontAwesomeIcon className="text-xl mt-1" icon={faThumbsDown} />
           <p className="text-xl">{post.downvotes}</p>
         </button>
@@ -86,7 +95,7 @@ const ViewPost = () => {
       </div>
       <p className="mt-4 text-justify">{post.content}</p>
     </div>
-  );
-};
+  )
+}
 
 export default ViewPost;

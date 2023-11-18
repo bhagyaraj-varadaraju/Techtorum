@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { useState } from "react";
-import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import PostCard from "../components/PostCard";
 import { UserContext } from "../context/UserContext";
 import Followers from "../components/Followers";
@@ -144,15 +144,17 @@ const ViewProfile = () => {
             No posts yet 🙁
           </p>
         ) : (
-          posts?.map((post) => (
-            <PostCard
-              key={post.id}
-              authorName={userName}
-              authorAvatar={profilePic}
-              date={post.created_on.slice(0, 10)}
-              title={post.title}
-              content={post.content}
-            />
+          posts?.map((post, idx) => (
+            <Link key={"link_" + idx} to={"/" + userName + "/post/" + post.id}>
+              <PostCard
+                key={post.id}
+                authorName={userName}
+                authorAvatar={profilePic}
+                date={post.created_on.slice(0, 10)}
+                title={post.title}
+                content={post.content}
+              />
+            </Link>
           ))
         )}
       </div>

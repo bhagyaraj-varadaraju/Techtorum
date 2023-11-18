@@ -47,7 +47,7 @@ const CreatePost = () => {
         </Button>
       </VStack>
     </Card>
-  );
-};
+  )
+}
 
 export default CreatePost;

@@ -7,7 +7,6 @@ import FollowRecommendations from "../components/FollowRecommendations";
 const HomeFeed = () => {
   const { user } = useContext(UserContext);
   const userName = user ? user.username : "";
-  const profilePic = user ? user.avatarurl : "";
 
   const [posts, setPosts] = useState([]);
 
