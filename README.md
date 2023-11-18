@@ -4,7 +4,7 @@ CodePath WEB103 Final Project
 
 Designed and developed by: Sai Pavan Kalyan Munaga, Bhagya Raj Varadaraju
 
-🔗 Link to deployed app:
+🔗 Link to deployed app: https://techtorum-client.up.railway.app/
 
 ## About
 
