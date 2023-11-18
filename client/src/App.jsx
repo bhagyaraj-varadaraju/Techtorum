@@ -21,49 +21,79 @@ function App() {
       ? "https://techtorum-server.up.railway.app"
       : "http://localhost:3001";
 
-  const appRouter = createBrowserRouter([
-    {
-      path: "/",
-      element: <RootLayout />,
-      children: [
-        {
-          index: true,
-          element: user && user.id ? <HomeFeed api_url={API_URL} /> : <Login api_url={API_URL} />,
-        },
-        {
-          path: "/login",
-          element: <Login api_url={API_URL} />,
-        },
-        {
-          path: "/logout",
-          element: <Logout />,
-        },
-        {
-          path: "/:userName",
-          element:
-            user && user.id ? <ViewProfile api_url={API_URL} /> : <Login api_url={API_URL} />,
-        },
-        {
-          path: "/:userName/new-post",
-          element:
-            user && user.id ? <CreatePost api_url={API_URL} /> : <Login api_url={API_URL} />,
-        },
-        {
-          path: "/:userName/post/:id",
-          element: user && user.id ? <ViewPost api_url={API_URL} /> : <Login api_url={API_URL} />,
-        },
-        {
-          path: "/:userName/post/:id/edit",
-          element: user && user.id ? <EditPost api_url={API_URL} /> : <Login api_url={API_URL} />,
-        },
-        {
-          path: "/:userName/edit",
-          element:
-            user && user.id ? <EditProfile api_url={API_URL} /> : <Login api_url={API_URL} />,
-        },
-      ],
-    },
-  ]);
+  const appRouter = createBrowserRouter(
+    [
+      {
+        path: "/",
+        element: <RootLayout />,
+        children: [
+          {
+            index: true,
+            element:
+              user && user.id ? (
+                <HomeFeed api_url={API_URL} />
+              ) : (
+                <Login api_url={API_URL} />
+              ),
+          },
+          {
+            path: "/login",
+            element: <Login api_url={API_URL} />,
+          },
+          {
+            path: "/logout",
+            element: <Logout />,
+          },
+          {
+            path: "/:userName",
+            element:
+              user && user.id ? (
+                <ViewProfile api_url={API_URL} />
+              ) : (
+                <Login api_url={API_URL} />
+              ),
+          },
+          {
+            path: "/:userName/new-post",
+            element:
+              user && user.id ? (
+                <CreatePost api_url={API_URL} />
+              ) : (
+                <Login api_url={API_URL} />
+              ),
+          },
+          {
+            path: "/:userName/post/:id",
+            element:
+              user && user.id ? (
+                <ViewPost api_url={API_URL} />
+              ) : (
+                <Login api_url={API_URL} />
+              ),
+          },
+          {
+            path: "/:userName/post/:id/edit",
+            element:
+              user && user.id ? (
+                <EditPost api_url={API_URL} />
+              ) : (
+                <Login api_url={API_URL} />
+              ),
+          },
+          {
+            path: "/:userName/edit",
+            element:
+              user && user.id ? (
+                <EditProfile api_url={API_URL} />
+              ) : (
+                <Login api_url={API_URL} />
+              ),
+          },
+        ],
+      },
+    ],
+    { basename: "/" }
+  );
 
   return (
     <Flex className="App" bg="gray.400">
