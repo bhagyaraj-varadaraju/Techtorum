@@ -7,6 +7,7 @@ const dropAllTables = async () => {
   TABLES.map(async (table) => {
     await pool.query(`DROP TABLE IF EXISTS ${table} CASCADE`);
   });
+  console.log("🎉 All Tables dropped successfully");
 };
 
 const createUsersTable = async () => {
@@ -37,7 +38,7 @@ const createPostsTable = async () => {
         upvote_count INTEGER NOT NULL DEFAULT 0,
         downvote_count INTEGER NOT NULL DEFAULT 0,
         created_on TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        FOREIGN KEY (user_id) REFERENCES users (id)
+        FOREIGN KEY (user_id) REFERENCES users (id) ON UPDATE CASCADE ON DELETE CASCADE
     );
     `;
   try {
@@ -55,8 +56,8 @@ const createCommentsTable = async () => {
         post_id INTEGER NOT NULL,
         content TEXT NOT NULL,
         created_on TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        FOREIGN KEY (user_id) REFERENCES users (id),
-        FOREIGN KEY (post_id) REFERENCES posts (id)
+        FOREIGN KEY (user_id) REFERENCES users (id) ON UPDATE CASCADE ON DELETE CASCADE,
+        FOREIGN KEY (post_id) REFERENCES posts (id) ON UPDATE CASCADE ON DELETE CASCADE
     );
     `;
   try {
@@ -74,8 +75,8 @@ const createVotesTable = async () => {
         post_id INTEGER NOT NULL,
         type VARCHAR(10) NOT NULL,
         created_on TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        FOREIGN KEY (user_id) REFERENCES users (id),
-        FOREIGN KEY (post_id) REFERENCES posts (id)
+        FOREIGN KEY (user_id) REFERENCES users (id) ON UPDATE CASCADE ON DELETE CASCADE,
+        FOREIGN KEY (post_id) REFERENCES posts (id) ON UPDATE CASCADE ON DELETE CASCADE
     );
     `;
   try {
