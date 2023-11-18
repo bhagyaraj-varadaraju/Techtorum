@@ -9,6 +9,11 @@ import passport from "passport";
 import { GitHub } from "./config/auth.js";
 import session from "express-session";
 
+const CLIENT_URL =
+  process.env.NODE_ENV === "production"
+    ? "https://techtorum-client.up.railway.app"
+    : "http://localhost:5173";
+
 const app = express();
 
 app.use(
@@ -21,7 +26,7 @@ app.use(
 app.use(express.json());
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: CLIENT_URL,
     methods: "GET,POST,PUT,DELETE,PATCH",
     credentials: true,
   })
@@ -33,11 +38,11 @@ passport.serializeUser((user, done) => done(null, user));
 passport.deserializeUser((user, done) => done(null, user));
 
 app.get("/", (req, res) => {
-  res.redirect("http://localhost:5173/");
+  res.redirect(CLIENT_URL);
 });
 
 app.get("/failure", (req, res) => {
-  res.redirect("http://localhost:5173/login");
+  res.redirect(CLIENT_URL + "/login");
 });
 
 app.use("/api/posts", postRoutes);

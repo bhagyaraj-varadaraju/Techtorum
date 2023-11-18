@@ -18,7 +18,7 @@ function App() {
   const { user } = ctx;
   const API_URL =
     process.env.NODE_ENV === "production"
-      ? "https://????.up.railway.app"
+      ? "https://techtorum-server.up.railway.app"
       : "http://localhost:3001";
 
   const appRouter = createBrowserRouter([
