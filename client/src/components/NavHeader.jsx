@@ -5,7 +5,7 @@ import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { useContext } from "react";
 import { UserContext } from "../context/UserContext";
 
-const NavHeader = () => {
+const NavHeader = ({ searchInput, onSearchInputChange }) => {
   const { user } = useContext(UserContext);
   const { logout } = useContext(UserContext);
 
@@ -42,6 +42,8 @@ const NavHeader = () => {
       <Spacer />
       <Flex alignItems="center">
         <Input
+          value={searchInput}
+          onChange={({ target: { value } }) => onSearchInputChange(value)}
           size={["sm", "md", "md"]}
           type="text"
           variant="filled"

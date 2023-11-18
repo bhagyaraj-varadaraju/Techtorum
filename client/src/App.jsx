@@ -8,8 +8,9 @@ import EditProfile from "./pages/EditProfile.jsx";
 import RootLayout from "./pages/RootLayout.jsx";
 import { Flex } from "@chakra-ui/react";
 import Login from "./pages/Login.jsx";
-import { UserContext, UserProvider } from "./context/UserContext.jsx";
+import { UserContext } from "./context/UserContext.jsx";
 import { useContext } from "react";
+import { SearchProvider } from "./context/SearchContext.jsx";
 import Logout from "./pages/Logout.jsx";
 
 function App() {
@@ -58,8 +59,10 @@ function App() {
   ]);
 
   return (
-    <Flex className="App" bg="gray.300">
-      <RouterProvider router={appRouter} />
+    <Flex className="App" bg="gray.400">
+        <SearchProvider>
+          <RouterProvider router={appRouter} />
+        </SearchProvider>
     </Flex>
   );
 }

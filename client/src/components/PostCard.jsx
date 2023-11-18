@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const PostCard = ({ authorName, authorAvatar, date, title, content, tags }) => {
+const PostCard = ({ postId, authorName, authorAvatar, date, title, content }) => {
   return (
     <div className="m-8 p-4 border-black border-solid border-2 rounded-xl">
       <div className="flex justify-between items-center">
@@ -17,8 +17,10 @@ const PostCard = ({ authorName, authorAvatar, date, title, content, tags }) => {
         </Link>
         <p className="m-2">{date}</p>
       </div>
-      <p className="text-xl m-2">{title}</p>
-      <p className="m-2 text-justify">{content}</p>
+      <Link to={"/" + authorName + "/post/" + postId}>
+        <p className="text-xl m-2">{title}</p>
+        <p className="m-2 text-justify">{content}</p>
+      </Link>
     </div>
   );
 };

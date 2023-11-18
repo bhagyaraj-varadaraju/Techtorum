@@ -88,10 +88,9 @@ const ViewPost = () => {
           <FontAwesomeIcon className="text-xl mt-1" icon={faThumbsDown} />
           <p className="text-xl">{post.downvotes}</p>
         </button>
-        <p className="ml-auto">
-          {/* <TimeAgo date={post.created_on} /> */}
+        <div className="ml-auto">
           <p className="text-xl">{post.created_on.slice(0, 10)}</p>
-        </p>
+        </div>
       </div>
       <p className="mt-4 text-justify">{post.content}</p>
     </div>
