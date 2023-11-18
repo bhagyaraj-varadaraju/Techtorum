@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import { UserContext } from "../context/UserContext";
 import FollowProfile from "./FollowProfile";
 
-const FollowRecommendations = () => {
+const FollowRecommendations = ({ api_url }) => {
   const { user } = useContext(UserContext);
   const userName = user.username;
 
@@ -11,7 +11,7 @@ const FollowRecommendations = () => {
   useEffect(() => {
     const fetchFollowRecommendations = async () => {
       const res = await fetch(
-        "/api/users/" + userName + "/follow-recommendations"
+        `${api_url}/api/users/` + userName + "/follow-recommendations"
       );
       const data = await res.json();
       setFollowRecommendations(data.recommendations);
@@ -29,7 +29,7 @@ const FollowRecommendations = () => {
         </p>
       ) : (
         followRecommendations.map((user) => (
-          <FollowProfile key={user.username} user={user} />
+          <FollowProfile key={user.username} user={user} api_url={api_url} />
         ))
       )}
     </div>

@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-const followings = ({ userName }) => {
+const followings = ({ userName, api_url }) => {
   const [following, setfollowing] = useState([]);
   const [showfollowing, setShowfollowing] = useState(false);
 
   useEffect(() => {
     const fetchfollowing = async () => {
-      const res = await fetch("/api/users/" + userName + "/following");
+      const res = await fetch(
+        `${api_url}/api/users/` + userName + "/following"
+      );
       const data = await res.json();
       setfollowing(data.following);
     };

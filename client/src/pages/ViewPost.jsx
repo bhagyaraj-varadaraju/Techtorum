@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faThumbsUp, faThumbsDown } from "@fortawesome/free-solid-svg-icons";
 import { UserContext } from "../context/UserContext";
 
-const ViewPost = () => {
+const ViewPost = ({ api_url }) => {
   const { user } = useContext(UserContext);
   const loggedInUserName = user.username;
   const [post, setPost] = useState({
@@ -21,7 +21,7 @@ const ViewPost = () => {
   const { userName, id } = useParams();
 
   const getVotes = async () => {
-    const res = await fetch("/api/votes/" + id);
+    const res = await fetch(`${api_url}/api/votes/` + id);
     const data = await res.json();
 
     const { upvotes, downvotes } = data;
@@ -31,7 +31,7 @@ const ViewPost = () => {
   useEffect(() => {
     const readPost = async () => {
       // GET the selected Post
-      const res = await fetch("/api/posts/" + userName + "/" + id);
+      const res = await fetch(`${api_url}/api/posts/` + userName + "/" + id);
       const data = await res.json();
       // Set the retrieved post data to the state variable
       if (data && data.length !== 0) {
@@ -46,7 +46,7 @@ const ViewPost = () => {
   }, []);
 
   const handleVote = async (voteType) => {
-    const res = await fetch(`/api/votes/${voteType}/${id}`, {
+    const res = await fetch(`${api_url}/api/votes/${voteType}/${id}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

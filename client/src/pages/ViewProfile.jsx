@@ -6,7 +6,7 @@ import { UserContext } from "../context/UserContext";
 import Followers from "../components/Followers";
 import Following from "../components/Following";
 
-const ViewProfile = () => {
+const ViewProfile = ({ api_url }) => {
   const { user: loggedInUser, logout } = useContext(UserContext);
   const loggedInUsername = loggedInUser.username;
   const { userName } = useParams();
@@ -21,7 +21,7 @@ const ViewProfile = () => {
 
   useEffect(() => {
     const fetchUserDetails = async () => {
-      const res = await fetch("/api/users/" + userName);
+      const res = await fetch(`${api_url}/api/users/` + userName);
       const data = await res.json();
 
       setProfilePic(data.avatarurl);
@@ -29,7 +29,7 @@ const ViewProfile = () => {
     };
 
     const fetchUserPosts = async () => {
-      const res = await fetch("/api/users/" + userName + "/posts");
+      const res = await fetch(`${api_url}/api/users/` + userName + "/posts");
       const data = await res.json();
       setPosts(data);
     };
@@ -40,7 +40,9 @@ const ViewProfile = () => {
 
   useEffect(() => {
     const isFollowing = async () => {
-      const res = await fetch("/api/users/" + loggedInUsername + "/following");
+      const res = await fetch(
+        `${api_url}/api/users/` + loggedInUsername + "/following"
+      );
       const data = await res.json();
       const followingUsernames = data.following.map((user) => user.username);
       return followingUsernames.includes(userName);
@@ -54,7 +56,7 @@ const ViewProfile = () => {
   }, []);
 
   const handleDeleteProfile = async () => {
-    const res = await fetch("/api/users/" + userName, {
+    const res = await fetch(`${api_url}/api/users/` + userName, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -65,29 +67,35 @@ const ViewProfile = () => {
   };
 
   const handleFollow = async () => {
-    const res = await fetch("/api/users/" + loggedInUsername + "/follow", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        followed_username: userName,
-      }),
-    });
+    const res = await fetch(
+      `${api_url}/api/users/` + loggedInUsername + "/follow",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          followed_username: userName,
+        }),
+      }
+    );
     const data = await res.json();
     navigate(0);
   };
 
   const handleUnFollow = async () => {
-    const res = await fetch("/api/users/" + loggedInUsername + "/follow", {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        followed_username: userName,
-      }),
-    });
+    const res = await fetch(
+      `${api_url}/api/users/` + loggedInUsername + "/follow",
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          followed_username: userName,
+        }),
+      }
+    );
     const data = await res.json();
     navigate(0);
   };
@@ -105,8 +113,8 @@ const ViewProfile = () => {
           <p>{bio}</p>
         </div>
 
-        <Followers userName={userName} />
-        <Following userName={userName} />
+        <Followers userName={userName} api_url={api_url} />
+        <Following userName={userName} api_url={api_url} />
 
         {loggedInUsername == userName ? (
           <>
@@ -139,8 +147,7 @@ const ViewProfile = () => {
       </div>
       <div className="posts w-[100%]">
         <p className="text-4xl text-center">Posts</p>
-        {posts && posts.length == 0 
-         ? (
+        {posts && posts.length == 0 ? (
           <p className="text-4xl text-center my-16 mx-auto p-4">
             No posts yet 🙁
           </p>

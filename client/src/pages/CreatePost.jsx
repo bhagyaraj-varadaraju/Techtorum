@@ -3,7 +3,7 @@ import { Card, VStack, Heading, Button, useToast } from "@chakra-ui/react";
 import PostInputForm from "../components/PostInputForm";
 import { useNavigate, useParams } from "react-router-dom";
 
-const CreatePost = () => {
+const CreatePost = ({ api_url }) => {
   // For handling the form inputs
   const [post, setPost] = useState({ title: "", content: "" });
   const toast = useToast();
@@ -22,7 +22,7 @@ const CreatePost = () => {
       },
       body: JSON.stringify(post),
     };
-    await fetch("/api/posts/" + userName, options);
+    await fetch(`${api_url}/api/posts/` + userName, options);
 
     setPost({ title: "", content: "" });
 
@@ -47,7 +47,7 @@ const CreatePost = () => {
         </Button>
       </VStack>
     </Card>
-  )
-}
+  );
+};
 
 export default CreatePost;

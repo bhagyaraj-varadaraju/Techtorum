@@ -1,9 +1,16 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { Card, Button, VStack, Heading, useToast, HStack}  from "@chakra-ui/react";
+import {
+  Card,
+  Button,
+  VStack,
+  Heading,
+  useToast,
+  HStack,
+} from "@chakra-ui/react";
 import PostInputForm from "../components/PostInputForm";
 
-const EditPost = () => {
+const EditPost = ({ api_url }) => {
   const [post, setPost] = useState({ title: "", content: "" });
   const { userName, id } = useParams();
   const toast = useToast();
@@ -12,7 +19,7 @@ const EditPost = () => {
   useEffect(() => {
     const readPost = async () => {
       // GET the selected Post
-      const res = await fetch("/api/posts/" + userName + "/" + id);
+      const res = await fetch(`${api_url}/api/posts/` + userName + "/" + id);
       const data = await res.json();
       // Set the retrieved post data to the state variable
       if (data && data.length !== 0) {
@@ -36,7 +43,7 @@ const EditPost = () => {
       },
       body: JSON.stringify(post),
     };
-    await fetch("/api/posts/" + userName + "/" + id, options);
+    await fetch(`${api_url}/api/posts/` + userName + "/" + id, options);
 
     setPost({ title: "", content: "" });
 
@@ -54,7 +61,7 @@ const EditPost = () => {
       },
       // body: JSON.stringify(post),
     };
-    await fetch("/api/posts/" + userName + "/" + id, options);
+    await fetch(`${api_url}/api/posts/` + userName + "/" + id, options);
 
     setPost({ title: "", content: "" });
 
@@ -67,7 +74,8 @@ const EditPost = () => {
       p={["4", "8", "8"]}
       bg="gray.50"
       direction="column"
-      align="center">
+      align="center"
+    >
       <VStack spacing={["4", "8", "8"]}>
         <Heading fontSize={["md", "lg", "lg"]}>Edit your post</Heading>
 
@@ -81,10 +89,9 @@ const EditPost = () => {
             Delete
           </Button>
         </HStack>
-
       </VStack>
     </Card>
-  )
-}
+  );
+};
 
 export default EditPost;

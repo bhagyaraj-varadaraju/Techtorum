@@ -16,6 +16,10 @@ import Logout from "./pages/Logout.jsx";
 function App() {
   const ctx = useContext(UserContext);
   const { user } = ctx;
+  const API_URL =
+    process.env.NODE_ENV === "production"
+      ? "https://????.up.railway.app"
+      : "http://localhost:3001";
 
   const appRouter = createBrowserRouter([
     {
@@ -24,7 +28,7 @@ function App() {
       children: [
         {
           index: true,
-          element: user && user.id ? <HomeFeed /> : <Login />,
+          element: user && user.id ? <HomeFeed api_url={API_URL} /> : <Login />,
         },
         {
           path: "/login",
@@ -36,23 +40,26 @@ function App() {
         },
         {
           path: "/:userName",
-          element: user && user.id ? <ViewProfile /> : <Login />,
+          element:
+            user && user.id ? <ViewProfile api_url={API_URL} /> : <Login />,
         },
         {
           path: "/:userName/new-post",
-          element: user && user.id ? <CreatePost /> : <Login />,
+          element:
+            user && user.id ? <CreatePost api_url={API_URL} /> : <Login />,
         },
         {
           path: "/:userName/post/:id",
-          element: user && user.id ? <ViewPost /> : <Login />,
+          element: user && user.id ? <ViewPost api_url={API_URL} /> : <Login />,
         },
         {
           path: "/:userName/post/:id/edit",
-          element: user && user.id ? <EditPost /> : <Login />,
+          element: user && user.id ? <EditPost api_url={API_URL} /> : <Login />,
         },
         {
           path: "/:userName/edit",
-          element: user && user.id ? <EditProfile /> : <Login />,
+          element:
+            user && user.id ? <EditProfile api_url={API_URL} /> : <Login />,
         },
       ],
     },
@@ -60,9 +67,9 @@ function App() {
 
   return (
     <Flex className="App" bg="gray.400">
-        <SearchProvider>
-          <RouterProvider router={appRouter} />
-        </SearchProvider>
+      <SearchProvider>
+        <RouterProvider router={appRouter} />
+      </SearchProvider>
     </Flex>
   );
 }

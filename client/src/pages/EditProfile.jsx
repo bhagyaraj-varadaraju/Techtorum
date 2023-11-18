@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
-const EditProfile = () => {
+const EditProfile = ({ api_url }) => {
   const navigate = useNavigate();
   const userName = useParams().userName;
   const handleFormSubmit = async (e) => {
@@ -17,7 +17,7 @@ const EditProfile = () => {
         avatarurl: avatarurl.current.value,
       }),
     };
-    await fetch("/api/users/" + userName, options);
+    await fetch(`${api_url}/api/users/` + userName, options);
 
     navigate("/" + userName);
   };
