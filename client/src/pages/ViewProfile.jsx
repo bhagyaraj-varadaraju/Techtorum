@@ -10,7 +10,7 @@ const ViewProfile = ({ api_url }) => {
   const { user: loggedInUser, logout } = useContext(UserContext);
   const loggedInUsername = loggedInUser.username;
   const { userName } = useParams();
-  const location = useLocation();
+  const navigate = useNavigate();
 
   const [profilePic, setProfilePic] = useState(
     "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
@@ -80,7 +80,7 @@ const ViewProfile = ({ api_url }) => {
       }
     );
     const data = await res.json();
-    location.reload();
+    navigate(`/${userName}`);
   };
 
   const handleUnFollow = async () => {
@@ -97,7 +97,7 @@ const ViewProfile = ({ api_url }) => {
       }
     );
     const data = await res.json();
-    location.reload();
+    navigate(`/${userName}`);
   };
 
   return (
