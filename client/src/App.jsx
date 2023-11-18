@@ -98,7 +98,10 @@ function App() {
   return (
     <Flex className="App" bg="gray.400">
       <SearchProvider>
-        <RouterProvider router={appRouter} />
+        <RouterProvider
+          router={appRouter}
+          fallbackElement={() => <p>This is a fallback element</p>}
+        />
       </SearchProvider>
     </Flex>
   );
