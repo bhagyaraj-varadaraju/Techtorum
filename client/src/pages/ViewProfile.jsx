@@ -80,7 +80,7 @@ const ViewProfile = ({ api_url }) => {
       }
     );
     const data = await res.json();
-    window.location.href = `/${userName}`;
+    navigate(`/redirect/${userName}`);
   };
 
   const handleUnFollow = async () => {
@@ -97,7 +97,7 @@ const ViewProfile = ({ api_url }) => {
       }
     );
     const data = await res.json();
-    window.location.href = `/${userName}`;
+    navigate(`/redirect/${userName}`);
   };
 
   return (

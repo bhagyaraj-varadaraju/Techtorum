@@ -12,6 +12,7 @@ import { UserContext } from "./context/UserContext.jsx";
 import { useContext } from "react";
 import { SearchProvider } from "./context/SearchContext.jsx";
 import Logout from "./pages/Logout.jsx";
+import Redirect from "./pages/Redirect.jsx";
 
 function App() {
   const ctx = useContext(UserContext);
@@ -43,6 +44,10 @@ function App() {
           {
             path: "/logout",
             element: <Logout />,
+          },
+          {
+            path: "/redirect/:username",
+            element: <Redirect />,
           },
           {
             path: "/:userName",
