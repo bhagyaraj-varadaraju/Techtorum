@@ -40,7 +40,7 @@ https://github.com/bhagyaraj-varadaraju/web103-final-project/assets/20358558/83e
 
 User can create, edit and delete posts.
 
-[gif goes here]
+https://github.com/bhagyaraj-varadaraju/web103-final-project/assets/20358558/e08343e5-9d11-4aa0-b1bd-a668cdaf560d
 
 ### User Feed ✅
 
@@ -52,16 +52,16 @@ https://github.com/bhagyaraj-varadaraju/web103-final-project/assets/20358558/5cb
 
 Users can search and filter the posts in their home feed.
 
-[gif goes here]
+https://github.com/bhagyaraj-varadaraju/web103-final-project/assets/20358558/485c788d-a81c-49fc-a38b-2974e79abd62
 
 ## Installation Instructions
 
 ## To run server
-cd server
-npm install
-npm start
+- cd server
+- npm install
+- npm start
 
 ## To run client
-cd client
-npm install
-nom run dev
+- cd client
+- npm install
+- npm run dev
