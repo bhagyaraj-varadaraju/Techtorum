@@ -1,5 +1,5 @@
 const Login = (props) => {
-  const SERVER_URL = "http://localhost:3001";
+  const SERVER_URL = props.api_url;
   const AUTH_URL = `${SERVER_URL}/auth/github`;
 
   return (

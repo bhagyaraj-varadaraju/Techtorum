@@ -4,7 +4,9 @@ const UserContext = createContext();
 
 const UserProvider = ({ children }) => {
   const [user, setUser] = useState("");
-  const API_URL = "http://localhost:3001";
+  const API_URL = process.env.NODE_ENV === "production"
+  ? "https://techtorum-server.up.railway.app"
+  : "http://localhost:3001";
 
   useEffect(() => {
     const getUser = async () => {
