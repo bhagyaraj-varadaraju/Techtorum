@@ -36,7 +36,7 @@ User can add personal details, view followers and following. User can also edit 
 
 https://github.com/bhagyaraj-varadaraju/web103-final-project/assets/20358558/83e8ca3e-b7f1-497c-a07d-5708fef9e10e
 
-### User Posts
+### User Posts ✅ 
 
 User can create, edit and delete posts.
 
@@ -48,18 +48,20 @@ User can view posts from other users they follow.
 
 https://github.com/bhagyaraj-varadaraju/web103-final-project/assets/20358558/5cb65147-221b-49f4-adf2-a48739387c87
 
-### User Interaction on posts
+### Search Functionality ✅ 
 
-User can upvote and comment on other users' posts.
-
-[gif goes here]
-
-### Search Functionality
-
-User can search for other users and posts.
+Users can search and filter the posts in their home feed.
 
 [gif goes here]
 
 ## Installation Instructions
 
-[instructions go here]
+## To run server
+cd server
+npm install
+npm start
+
+## To run client
+cd client
+npm install
+nom run dev

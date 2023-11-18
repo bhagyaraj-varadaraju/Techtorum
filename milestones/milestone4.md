@@ -4,8 +4,6 @@ This document should be completed and submitted during **Unit 8** of this course
 
 ## Checklist
 
-This unit, be sure to complete all tasks listed below. To complete a task, place an `x` between the brackets.
-
 - [x] Update the status of issues in your project board as you complete them
 - [x] In `readme.md`, check off the features you have completed in this unit by adding a ✅ emoji in front of their title
   - [x] Under each feature you have completed, **include a GIF** showing feature functionality
