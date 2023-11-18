@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import PostCard from "../components/PostCard";
 import { UserContext } from "../context/UserContext";
 import Followers from "../components/Followers";
@@ -10,7 +10,7 @@ const ViewProfile = ({ api_url }) => {
   const { user: loggedInUser, logout } = useContext(UserContext);
   const loggedInUsername = loggedInUser.username;
   const { userName } = useParams();
-  const navigate = useNavigate();
+  const location = useLocation();
 
   const [profilePic, setProfilePic] = useState(
     "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
@@ -80,7 +80,7 @@ const ViewProfile = ({ api_url }) => {
       }
     );
     const data = await res.json();
-    window.location.reload();
+    location.reload();
   };
 
   const handleUnFollow = async () => {
@@ -97,7 +97,7 @@ const ViewProfile = ({ api_url }) => {
       }
     );
     const data = await res.json();
-    window.location.reload();
+    location.reload();
   };
 
   return (
